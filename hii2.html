@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hehe</title>
+
+<style>
+body{
+background:#ffb6d9;
+overflow:hidden;
+margin:0;
+font-family:sans-serif;
+}
+
+/* main box */
+.container{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+z-index:10;
+width:90%;
+max-width:350px;
+}
+
+/* raining hearts */
+.heart{
+position:fixed;
+top:-10vh;
+font-size:22px;
+animation:heartFall linear forwards;
+pointer-events:none;
+z-index:1;
+}
+
+@keyframes heartFall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
+}
+
+/* sparkles */
+.sparkle{
+position:fixed;
+top:-10vh;
+font-size:22px;
+animation:float linear forwards;
+pointer-events:none;
+z-index:3;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:1;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+.celebrate{
+position:absolute;
+font-size:22px;
+animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(100vh);}
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
+border:1px solid #aaa;
+font-size:16px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="mainBox">
+<h1>Wsp Bobby 😌</h1>
+<p>YK im so cool and awsom purani bate bhulja aur be mine again 🐏 </p>
+<button id="yesBtn">Yes obviously 😎</button>
+<button id="noBtn">No</button>
+</div>
+
+<script>
+
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+const box=document.getElementById("mainBox");
+
+const funnyTexts=[
+"nah you misclicked 😌",
+"bhot marunga",
+"only real girls will accept",
+"what is this behaviour 😂",
+"try again ✨",
+"nah that ain't you",
+"system error 😭"
+];
+
+noBtn.addEventListener("mouseover",()=>{
+let x=Math.random()*220-110;
+let y=Math.random()*220-110;
+noBtn.style.transform=`translate(${x}px,${y}px)`;
+noBtn.innerText=funnyTexts[Math.floor(Math.random()*funnyTexts.length)];
+});
+
+yesBtn.addEventListener("click",()=>{
+box.innerHTML="<h1>Yayy ab itna bhi kuch khas nhi mai 😭🔥</h1><p>W choice hai aapki</p><h2>ILYSMMM✨</h2>";
+startCelebrate();
+});
+
+/* raining hearts */
+function createHeart(){
+const h=document.createElement("div");
+h.classList.add("heart");
+h.innerText=["💖","💗","💕","💘"][Math.floor(Math.random()*4)];
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(Math.random()*3+4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),7000);
+}
+setInterval(createHeart,300);
+
+/* sparkles */
+function createSparkle(){
+const s=document.createElement("div");
+s.classList.add("sparkle");
+s.innerText=["✨","💫","⭐"][Math.floor(Math.random()*3)];
+s.style.left=Math.random()*100+"vw";
+s.style.animationDuration=(Math.random()*3+3)+"s";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),6000);
+}
+setInterval(createSparkle,400);
+
+function startCelebrate(){
+for(let i=0;i<50;i++){
+const c=document.createElement("div");
+c.classList.add("celebrate");
+c.innerText=["🎉","✨","👑","🔥"][Math.floor(Math.random()*4)];
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+}
+
+</script>
+
+</body>
+</html>
+
+
